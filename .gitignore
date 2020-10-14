@@ -1,5 +1,6 @@
 *.hprof
 *.iml
+*.json
 *.xccheckout
 *.xcscmblueprint
 .DS_Store

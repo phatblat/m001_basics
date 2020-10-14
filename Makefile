@@ -11,7 +11,12 @@ DATABASE=sample_supplies
 .PHONY: clean
 clean:
 	rm -rf dump/
+	rm *.json
 
 .PHONY: dump
 dump:
 	mongodump --uri "mongodb+srv://${USERNAME}:${PASSWORD}@${CLUSTER}/${DATABASE}"
+
+.PHONY: export
+export:
+	mongoexport --uri="mongodb+srv://${USERNAME}:${PASSWORD}@${CLUSTER}/${DATABASE}" --collection=sales --out=sales.json
