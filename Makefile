@@ -20,3 +20,11 @@ dump:
 .PHONY: export
 export:
 	mongoexport --uri="mongodb+srv://${USERNAME}:${PASSWORD}@${CLUSTER}/${DATABASE}" --collection=sales --out=sales.json
+
+.PHONY: restore
+restore:
+	mongorestore --uri "mongodb+srv://${USERNAME}:${PASSWORD}@${CLUSTER}/${DATABASE}" --drop dump
+
+.PHONY: import
+import:
+	mongoimport --uri="mongodb+srv://${USERNAME}:${PASSWORD}@${CLUSTER}/${DATABASE}" --drop sales.json
